@@ -23,12 +23,12 @@ export default function Home({headerFooter, products}) {
 
 export async function getStaticProps() {
   const {data: headerFooterData} = await axios.get( HEADER_FOOTER_ENDPOINT );
-  const {data: productsData} = await axios.get( GET_PRODUCTS_ENDPOINT );
+  const {data: products } = await axios.get( GET_PRODUCTS_ENDPOINT );
 
   return{
     props: {
       headerFooter: headerFooterData?.data ??  {}, 
-      products: productsData?.products ?? {} 
+      products: products?.success ?? {} 
     },
 
     revalidate: 1,
