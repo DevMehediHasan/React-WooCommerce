@@ -3,7 +3,11 @@ module.exports = {
 		'./src/components/**/*.js',
 		'./pages/**/*.js'],
 	theme: {
-		extend: {},
+		extend: {
+			spacing:{
+				'11px': '11px'
+			}
+		},
 	},
 	variants: {},
 	plugins: [

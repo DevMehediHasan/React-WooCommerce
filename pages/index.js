@@ -1,34 +1,26 @@
-import Header from "../src/components/layouts/header";
-import Footer from "../src/components/layouts/footer";
 import axios from "axios";
 import Products from "../src/components/products";
-import { GET_PRODUCTS_ENDPOINT, HEADER_FOOTER_ENDPOINT } from "../src/utils/constants/endpoints";
+import { HEADER_FOOTER_ENDPOINT } from "../src/utils/constants/endpoints";
+import { getProductData } from "../src/utils/products";
+import Layout from "../src/components/layout";
 
 export default function Home({headerFooter, products}) {
-  const { header, footer } = headerFooter || {};
+  
    return (
-        <div >
-          
-          <Header header={header}/>
-
-          <main  className="container mx-auto p-4">
-            <Products products={products}/>
-          </main>
-
-          <Footer footer={footer}/>
-
-        </div>
+        <Layout headerFooter={headerFooter || {}}>
+          <Products products={products}/>
+        </Layout>
   )
 }
 
 export async function getStaticProps() {
   const {data: headerFooterData} = await axios.get( HEADER_FOOTER_ENDPOINT );
-  const {data: products } = await axios.get( GET_PRODUCTS_ENDPOINT );
+  const {data: products } = await getProductData();
 
   return{
     props: {
       headerFooter: headerFooterData?.data ??  {}, 
-      products: products?.success ?? {} 
+      products: products ?? {} 
     },
 
     revalidate: 1,
