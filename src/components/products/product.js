@@ -24,7 +24,7 @@ const Product = ( {product} ) => {
                             width="380"
                             height="380"
                         />
-                        <h3 className='font-bold'>{ product?.name ?? ''}</h3>
+                        <h6 className='font-lato-bold'>{ product?.name ?? ''}</h6>
                         <div dangerouslySetInnerHTML={{ __html: sanitize( product?.price_html ) }}/>
                     </a>
                 </Link>

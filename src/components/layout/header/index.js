@@ -5,7 +5,6 @@ import { isEmpty } from 'lodash';
 
 import { BurgerIcon, TailwindIcon, Bag, User, Wishlist } from '../../icons';
 import { AppContext } from '../../context';
-// import { AppContext } from '../../context';
 
 const Header = ( { header } ) => {
 	
